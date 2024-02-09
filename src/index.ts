@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction } from "express";
 import http from "http";
 import dotenv from "dotenv";
 dotenv.config();
@@ -13,6 +13,7 @@ import { logger } from "./middleware/logger";
 import { errorHandler } from "./middleware/errorHandler";
 import userRoutes from "./routes/User";
 import otpRoutes from "./routes/OTP";
+import { updateImage } from "./controllers/User";
 
 const app = express();
 
@@ -30,6 +31,9 @@ app.use(cookieParser());
 
 app.use(logger);
 
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
 const server = http.createServer(app);
 
 app.get("/", (req, res) => {
@@ -38,6 +42,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/auth/otp", otpRoutes);
+app.post("/api/v1/auth/updateImage/:id", upload.single("image"), updateImage);
 
 app.use(errorHandler);
 

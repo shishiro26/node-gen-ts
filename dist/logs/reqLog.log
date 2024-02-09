@@ -21,3 +21,4 @@
 20240209	12:02:08	POST	/api/auth/refresh-token/	undefined
 20240209	12:02:30	POST	/api/v1/auth/refresh-token/	undefined
 20240209	12:02:38	POST	/api/v1/auth/refresh-token/	undefined
+20240210	01:02:45	POST	/api/v1/auth/updateImage/65c5c27371151f757c1401b7/	undefined

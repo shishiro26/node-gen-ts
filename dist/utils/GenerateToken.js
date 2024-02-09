@@ -11,7 +11,7 @@ const AccessToken = (userId) => {
         const secret = process.env.SECRET_KEY;
         const options = {
             expiresIn: "20m",
-            issuer: "nodegen.com",
+            issuer: "nodegen",
             audience: userId.toString(),
         };
         jsonwebtoken_1.default.sign(payload, secret, options, (err, token) => {
@@ -34,6 +34,7 @@ const verifyAccessToken = (req, res, next) => {
             const message = err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
             return next(new Error(message));
         }
+        //@ts-expect-error
         req.payload = payload;
         next();
     });

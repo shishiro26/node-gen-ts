@@ -31,9 +31,6 @@ const userSchema = new mongoose_1.default.Schema({
     image: {
         type: String,
     },
-    description: {
-        type: String,
-    },
     isVerified: {
         type: Boolean,
         default: false,

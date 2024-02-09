@@ -230,6 +230,7 @@ const userInfo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!mongoose_1.default.Types.ObjectId.isValid(id)) {
             throw new Error("Invalid user ID format");
         }
+        //@ts-expect-error
         if (req.payload.aud !== id) {
             throw new Error("Invalid access token");
         }
