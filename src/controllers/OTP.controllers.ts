@@ -1,5 +1,5 @@
-import OTP from "../models/OTP";
-import User from "../models/User";
+import OTP from "../models/OTP.models";
+import User from "../models/User.models";
 import otpGenerator from "otp-generator";
 import { sendMailer } from "../utils/SendMail.js";
 import { Request, Response } from "express";

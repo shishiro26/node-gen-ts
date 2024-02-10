@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
-import User from "../models/User";
+import User from "../models/User.models";
 import otpGenerator from "otp-generator";
 import { sendMailer } from "../utils/SendMail";
 import mongoose from "mongoose";
-import OTP from "../models/OTP";
+import OTP from "../models/OTP.models";
 import { NextFunction, Request, Response } from "express";
 import {
   AccessToken,
@@ -136,13 +136,9 @@ export const updatePassword = async (req: Request, res: Response) => {
       throw new Error("User is not verified");
     }
 
-    const { oldPassword, newPassword, confirmNewPassword } = req.body;
+    const { oldPassword, newPassword } = req.body;
 
-    if (newPassword !== confirmNewPassword) {
-      throw new Error("New passwords do not match");
-    }
-
-    const isPasswordMatch = await bcrypt.compare(
+    const isPasswordMatch = await bcrypt.compareSync(
       oldPassword,
       userDetails.password
     );

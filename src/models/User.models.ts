@@ -33,14 +33,6 @@ const userSchema = new mongoose.Schema(
       default: false,
       required: true,
     },
-    markedForDeletion: {
-      type: Boolean,
-      default: false,
-      required: true,
-    },
-    expiresIn: {
-      type: Date,
-    },
   },
   { timestamps: true }
 );

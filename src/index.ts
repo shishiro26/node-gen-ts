@@ -11,9 +11,9 @@ import multer from "multer";
 import connectDB from "./config/db";
 import { logger } from "./middleware/logger";
 import { errorHandler } from "./middleware/errorHandler";
-import userRoutes from "./routes/User";
-import otpRoutes from "./routes/OTP";
-import { updateImage } from "./controllers/User";
+import userRoutes from "./routes/User.routes";
+import otpRoutes from "./routes/OTP.routes";
+import { updateImage } from "./controllers/User.controllers";
 
 const app = express();
 
@@ -37,7 +37,7 @@ const upload = multer({ storage });
 const server = http.createServer(app);
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("WELCOME TO NODEGEN");
 });
 
 app.use("/api/v1/auth", userRoutes);

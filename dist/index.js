@@ -15,9 +15,9 @@ const multer_1 = __importDefault(require("multer"));
 const db_1 = __importDefault(require("./config/db"));
 const logger_1 = require("./middleware/logger");
 const errorHandler_1 = require("./middleware/errorHandler");
-const User_1 = __importDefault(require("./routes/User"));
-const OTP_1 = __importDefault(require("./routes/OTP"));
-const User_2 = require("./controllers/User");
+const User_routes_1 = __importDefault(require("./routes/User.routes"));
+const OTP_routes_1 = __importDefault(require("./routes/OTP.routes"));
+const User_controllers_1 = require("./controllers/User.controllers");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
     origin: "*",
@@ -33,11 +33,11 @@ const storage = multer_1.default.memoryStorage();
 const upload = (0, multer_1.default)({ storage });
 const server = http_1.default.createServer(app);
 app.get("/", (req, res) => {
-    res.send("Hello World");
+    res.send("WELCOME TO NODEGEN");
 });
-app.use("/api/v1/auth", User_1.default);
-app.use("/api/v1/auth/otp", OTP_1.default);
-app.post("/api/v1/auth/updateImage/:id", upload.single("image"), User_2.updateImage);
+app.use("/api/v1/auth", User_routes_1.default);
+app.use("/api/v1/auth/otp", OTP_routes_1.default);
+app.post("/api/v1/auth/updateImage/:id", upload.single("image"), User_controllers_1.updateImage);
 app.use(errorHandler_1.errorHandler);
 const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`🚀 server at http://localhost:${port}.`));
