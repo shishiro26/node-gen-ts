@@ -8,7 +8,7 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   logEvents(
-    `${err.name}: ${err.message}\t${req.method}\t${req.url}\t${req.headers.origin}`,
+    `${err.name}: ${err.message}\t${req.method}\t${req.url}\t${req.headers.origin}\n`,
     "errLog.log"
   );
   console.log(err.message);

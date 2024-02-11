@@ -1,1 +1,0 @@
-20240209	10:02:01	SyntaxError: Expected double-quoted property name in JSON at position 110	POST	/api/v1/auth/register	undefined20240209	12:02:30	Error: Refresh token not found	POST	/api/v1/auth/refresh-token/	undefined
