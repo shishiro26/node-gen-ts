@@ -15,11 +15,24 @@ export const register = async (req: Request, res: Response) => {
   try {
     const { Username, email, password } = req.body;
 
-    const duplicate = await User.findOne({ email }).exec();
+    const duplicate = await User.findOne({
+      $or: [{ email }, { Username }],
+    })
+      .lean()
+      .exec();
+
     if (duplicate) {
-      return res.status(409).json({
-        message: "User already exists. Try signing up with a different email.",
-      });
+      if (duplicate.Username === Username) {
+        return res.status(409).json({
+          message: "Username taken. Try signing up with a different username",
+        });
+      }
+      if (duplicate.email === email) {
+        return res.status(409).json({
+          message:
+            "User already exists. Try signing up with a different email.",
+        });
+      }
     }
 
     const salt = await bcrypt.genSalt();

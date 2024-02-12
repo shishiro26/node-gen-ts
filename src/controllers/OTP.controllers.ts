@@ -40,9 +40,14 @@ export const resendOtp = async (req: Request, res: Response) => {
       throw new Error("User not found");
     }
 
-    const otp = otpGenerator.generate(6, { digits: true });
+    const otp = await otpGenerator.generate(6, {
+      digits: true,
+      specialChars: false,
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+    });
     const email = user.email;
-
+    
     await OTP.create({ otp, email });
     sendMailer(email, otp, user.Username, "resendOTP");
 
