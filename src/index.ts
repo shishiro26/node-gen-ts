@@ -8,7 +8,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 
-import connectDB from "./config/db";
+import connectDB from "./config/db.server";
 import { logger } from "./middleware/logger";
 import { errorHandler } from "./middleware/errorHandler";
 import userRoutes from "./routes/User.routes";
@@ -37,7 +37,7 @@ const upload = multer({ storage });
 const server = http.createServer(app);
 
 app.get("/", (req, res) => {
-  res.send("WELCOME TO NODEGEN");
+  res.send("WELCOME TO NODGEN");
 });
 
 app.use("/api/v1/auth", userRoutes);

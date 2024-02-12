@@ -20,7 +20,7 @@ export const AccessToken = (
     const secret = process.env.SECRET_KEY as string;
     const options: Options = {
       expiresIn: "20m",
-      issuer: "nodegen",
+      issuer: "nodgen.com",
       audience: userId.toString(),
     };
 
@@ -63,7 +63,7 @@ export const RefreshToken = (
     const secret = process.env.REFRESH_KEY as string;
     const options: Options = {
       expiresIn: "1y",
-      issuer: "nodegen",
+      issuer: "nodgen.com",
       audience: userId.toString(),
     };
 

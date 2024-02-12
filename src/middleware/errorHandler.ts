@@ -1,4 +1,4 @@
-import { logEvents } from "./logger.js";
+import { logEvents } from "./logger";
 import { Request, Response, NextFunction } from "express";
 
 export const errorHandler = (

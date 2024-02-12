@@ -9,7 +9,7 @@ import {
   AccessToken,
   RefreshToken,
   verifyRefreshToken,
-} from "../utils/GenerateToken.js";
+} from "../utils/GenerateToken";
 
 export const register = async (req: Request, res: Response) => {
   try {

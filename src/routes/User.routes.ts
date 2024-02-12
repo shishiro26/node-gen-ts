@@ -12,7 +12,7 @@ import { verifyAccessToken, verifyRefreshToken } from "../utils/GenerateToken";
 
 router.post("/register", register);
 router.post("/login", login);
-router.post("/logout", verifyAccessToken, logout);
+router.post("/logout/:id", verifyAccessToken, logout);
 router.patch("/updatePwd/:id", verifyAccessToken, updatePassword);
 router.get("/userInfo/:id", verifyAccessToken, userInfo);
 router.post("/refresh-token", refreshToken);

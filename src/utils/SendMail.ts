@@ -19,7 +19,7 @@ export const sendMailer = async (
     let subject, text, html;
 
     if (template === "registration") {
-      const projectName = process.env.PROJECT_NAME || "nodegen";
+      const projectName = process.env.PROJECT_NAME || "NODGEN";
 
       subject = `Welcome to ${projectName} - Registration OTP`;
       text =
@@ -64,7 +64,7 @@ export const sendMailer = async (
       
       </html>`;
     } else if (template === "passwordReset") {
-      const projectName = process.env.PROJECT_NAME || "nodegen";
+      const projectName = process.env.PROJECT_NAME || "NODGEN";
 
       subject = "Password Reset Requested!";
       text =
@@ -118,7 +118,7 @@ export const sendMailer = async (
       
       </html>`;
     } else if (template === "deleteAccount") {
-      const projectName = process.env.PROJECT_NAME || "nodegen";
+      const projectName = process.env.PROJECT_NAME || "NODGEN";
 
       subject = "Delete Account Requested";
       text =
@@ -178,7 +178,7 @@ export const sendMailer = async (
       </body>
       </html>`;
     } else if (template === "accountDeleted") {
-      const projectName = process.env.PROJECT_NAME || "nodegen";
+      const projectName = process.env.PROJECT_NAME || "NODGEN";
 
       subject = "Account Deleted";
       text =
@@ -227,7 +227,7 @@ export const sendMailer = async (
         </body>
       </html>`;
     } else if (template === "resendOTP") {
-      const projectName = process.env.PROJECT_NAME || "nodegen";
+      const projectName = process.env.PROJECT_NAME || "NODGEN";
 
       subject = "Resend OTP";
       text =
@@ -278,10 +278,7 @@ export const sendMailer = async (
         </body>
       </html>`;
     }
-    console.table(process.env.USER);
-    console.log(process.env.USER);
-    console.log(process.env.PROJECT_NAME);
-    const projectName = process.env.PROJECT_NAME || "nodegen";
+    const projectName = process.env.PROJECT_NAME || "NODGEN";
 
     const mailOptions = {
       from: `'${projectName} ||  <${process.env.USER}>`,

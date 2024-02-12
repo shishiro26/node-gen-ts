@@ -1,7 +1,7 @@
 import OTP from "../models/OTP.models";
 import User from "../models/User.models";
 import otpGenerator from "otp-generator";
-import { sendMailer } from "../utils/SendMail.js";
+import { sendMailer } from "../utils/SendMail";
 import { Request, Response } from "express";
 
 export const verifyOtp = async (req: Request, res: Response) => {
@@ -9,8 +9,6 @@ export const verifyOtp = async (req: Request, res: Response) => {
     const { otp, email } = req.body;
 
     const verifyOTP = await OTP.findOne({ email, otp });
-    console.table({ otp, email });
-    console.log(verifyOTP);
     if (!verifyOTP) {
       throw new Error("Invalid OTP or Email");
     }
